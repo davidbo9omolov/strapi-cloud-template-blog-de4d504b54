@@ -1,4 +1,76 @@
 {
+  "techStacks": [
+    { "name": "TypeScript", "category": "Languages", "level": 5, "order": 1 },
+    { "name": "JavaScript", "category": "Languages", "level": 5, "order": 2 },
+    { "name": "React", "category": "Frontend", "level": 5, "order": 3 },
+    { "name": "Next.js", "category": "Frontend", "level": 5, "order": 4 },
+    { "name": "Vue.js", "category": "Frontend", "level": 3, "order": 5 },
+    { "name": "Angular", "category": "Frontend", "level": 2, "order": 6 },
+    { "name": "Redux", "category": "Frontend", "level": 4, "order": 7 },
+    { "name": "Zustend", "category": "Frontend", "level": 4, "order": 8 },
+    { "name": "Jest", "category": "Frontend", "level": 5, "order": 9 },
+    { "name": "Cypress", "category": "Frontend", "level": 5, "order": 10 },
+    { "name": "Tailwind CSS", "category": "Frontend", "level": 5, "order": 11 },
+    { "name": "React Bits", "category": "Frontend", "level": 5, "order": 12 },
+    { "name": "Shadcn/ui", "category": "Frontend", "level": 5, "order": 13 },
+    { "name": "MaterialUI", "category": "Frontend", "level": 5, "order": 14 },
+    { "name": "Three.js", "category": "Frontend", "level": 3, "order": 15 },
+    { "name": "Framer Motion", "category": "Frontend", "level": 3, "order": 16 },
+    { "name": "Node.js", "category": "Backend", "level": 3, "order": 17 },
+    { "name": "Express", "category": "Backend", "level": 2, "order": 18 },
+    { "name": "NestJS", "category": "Backend", "level": 2, "order": 19 },
+    { "name": "Strapi", "category": "Backend", "level": 4, "order": 20 },
+    { "name": "REST", "category": "Backend", "level": 5, "order": 21 },
+    { "name": "GraphQL", "category": "Backend", "level": 3, "order": 22 },
+    { "name": "PostgreSQL", "category": "Database", "level": 2, "order": 23 },
+    { "name": "MongoDB", "category": "Database", "level": 3, "order": 24 },
+    { "name": "Prisma", "category": "Database", "level": 3, "order": 25 },
+    { "name": "Docker", "category": "DevOps", "level": 3, "order": 26 },
+    { "name": "Vercel", "category": "DevOps", "level": 5, "order": 27 },
+    { "name": "GitHub Actions", "category": "DevOps", "level": 4, "order": 28 }
+  ],
+  "socials": [
+    {
+      "name": "GitHub",
+      "handle": "@davidbo9omolov",
+      "url": "https://github.com/davidbo9omolov",
+      "icon": "github",
+      "description": "Open source projects and contributions",
+      "order": 1
+    },
+    {
+      "name": "Telegram",
+      "handle": "@dav1d645",
+      "url": "https://t.me/dav1d645",
+      "icon": "telegram",
+      "description": "Thoughts on tech, travel, and life",
+      "order": 2
+    },
+    {
+      "name": "LinkedIn",
+      "handle": "David Bogomolov",
+      "url": "https://www.linkedin.com/in/david-bogomolov-569830284",
+      "icon": "linkedin",
+      "description": "Professional network and experience",
+      "order": 3
+    },
+    {
+      "name": "Discord",
+      "handle": "gun13r",
+      "url": "https://discord.com/users/357932479358697484",
+      "icon": "discord",
+      "description": "Community and real-time conversations",
+      "order": 4
+    },
+    {
+      "name": "Email",
+      "handle": "david.bogomolov2@gmail.com",
+      "url": "mailto:david.bogomolov2@gmail.com",
+      "icon": "mail",
+      "description": "Get in touch for work or collaboration",
+      "order": 5
+    }
+  ],
   "global": {
     "siteName": "Strapi Blog",
     "defaultSeo": {
@@ -63,177 +135,128 @@
   ],
   "articles": [
     {
-      "title": "The internet's Own boy",
-      "slug": "the-internet-s-own-boy",
+      "title": "Building Scalable APIs with Next.js Route Handlers",
+      "slug": "building-scalable-apis-nextjs-route-handlers",
+      "description": "A deep dive into structuring production-ready API routes",
+      "excerpt": "A deep dive into structuring production-ready API routes with caching, rate limiting, and proper error handling patterns.",
+      "tags": ["Next.js", "API", "Backend"],
+      "content": "Next.js Route Handlers provide a powerful way to build API endpoints directly within your application. In this article, we explore how to structure production-ready routes with proper caching strategies, rate limiting middleware, and consistent error handling patterns.\n\n## Why Route Handlers?\n\nRoute Handlers replace the old API Routes from the Pages Router. They colocate with your app directory structure and support all HTTP methods natively.\n\n## Caching Strategies\n\nOne of the most impactful optimizations is implementing proper caching. Next.js supports both static and dynamic caching out of the box, but for API routes you often need more granular control.\n\n## Rate Limiting\n\nProtecting your endpoints from abuse is critical. We implement a sliding window rate limiter using Redis that scales across multiple serverless instances.\n\n## Error Handling\n\nConsistent error responses make your API predictable and easier to consume. We define a standard error shape and middleware that catches and formats all errors uniformly.",
+      "category": {
+        "id": 2
+      },
+      "author": {
+        "id": 1
+      },
+      "cover": null,
+      "blocks": [
+        {
+          "__component": "shared.rich-text",
+          "body": "## Why Route Handlers?\n\nRoute Handlers replace the old API Routes from the Pages Router. They colocate with your app directory structure and support all HTTP methods natively.\n\n## Caching Strategies\n\nOne of the most impactful optimizations is implementing proper caching. Next.js supports both static and dynamic caching out of the box, but for API routes you often need more granular control.\n\n## Rate Limiting\n\nProtecting your endpoints from abuse is critical. We implement a sliding window rate limiter using Redis that scales across multiple serverless instances.\n\n## Error Handling\n\nConsistent error responses make your API predictable and easier to consume. We define a standard error shape and middleware that catches and formats all errors uniformly."
+        }
+      ]
+    },
+    {
+      "title": "The Case for TypeScript Strict Mode in Every Project",
+      "slug": "typescript-strict-mode-every-project",
+      "description": "Why enabling strict mode from day one saves debugging hours",
+      "excerpt": "Why enabling strict mode from day one saves hundreds of hours in debugging and improves team velocity.",
+      "tags": ["TypeScript", "DX"],
+      "content": "TypeScript's strict mode is often seen as an optional nicety, but I'd argue it should be the default for every project. Here's why enabling it from day one pays massive dividends.\n\n## What Strict Mode Enables\n\nStrict mode activates several compiler checks: strictNullChecks, strictFunctionTypes, strictBindCallApply, noImplicitAny, noImplicitThis, and alwaysStrict.\n\n## The Cost of Retrofitting\n\nAdding strict mode to an existing codebase is painful. We once spent three weeks fixing 2,000+ type errors when enabling it on a mature project. Starting strict avoids this entirely.\n\n## Real-World Impact\n\nOn our team, strict mode caught an average of 12 potential runtime errors per sprint during code review. These are bugs that would have reached production without it.",
+      "category": {
+        "id": 2
+      },
+      "author": {
+        "id": 1
+      },
+      "cover": null,
+      "blocks": [
+        {
+          "__component": "shared.rich-text",
+          "body": "## What Strict Mode Enables\n\nStrict mode activates several compiler checks: strictNullChecks, strictFunctionTypes, strictBindCallApply, noImplicitAny, noImplicitThis, and alwaysStrict.\n\n## The Cost of Retrofitting\n\nAdding strict mode to an existing codebase is painful. We once spent three weeks fixing 2,000+ type errors when enabling it on a mature project. Starting strict avoids this entirely.\n\n## Real-World Impact\n\nOn our team, strict mode caught an average of 12 potential runtime errors per sprint during code review. These are bugs that would have reached production without it."
+        }
+      ]
+    },
+    {
+      "title": "Optimizing React Performance: Beyond React.memo",
+      "slug": "optimizing-react-performance-beyond-memo",
+      "description": "Practical strategies for improving React app performance",
+      "excerpt": "Practical strategies for improving React app performance including code splitting, virtualization, and state management patterns.",
+      "tags": ["React", "Performance"],
+      "content": "React.memo is the first tool most developers reach for when optimizing performance, but it's often not the right solution. Let's explore strategies that make a bigger impact.\n\n## Code Splitting with React.lazy\n\nReducing your initial bundle size is the single most impactful performance optimization. React.lazy combined with Suspense boundaries lets you load components on demand.\n\n## Virtualization for Large Lists\n\nRendering thousands of DOM nodes crushes performance. Libraries like react-window and TanStack Virtual render only visible items, keeping the DOM lean.\n\n## State Colocation\n\nThe most underrated optimization: move state as close to where it's used as possible. Global state that triggers full-tree re-renders is the #1 performance killer in React apps.\n\n## useMemo and useCallback — When They Actually Help\n\nThese hooks have a cost. They're only beneficial when the computation is expensive or when the value is passed to a memoized child component.",
+      "category": {
+        "id": 2
+      },
+      "author": {
+        "id": 1
+      },
+      "cover": null,
+      "blocks": [
+        {
+          "__component": "shared.rich-text",
+          "body": "## Code Splitting with React.lazy\n\nReducing your initial bundle size is the single most impactful performance optimization. React.lazy combined with Suspense boundaries lets you load components on demand.\n\n## Virtualization for Large Lists\n\nRendering thousands of DOM nodes crushes performance. Libraries like react-window and TanStack Virtual render only visible items, keeping the DOM lean.\n\n## State Colocation\n\nThe most underrated optimization: move state as close to where it's used as possible. Global state that triggers full-tree re-renders is the #1 performance killer in React apps."
+        }
+      ]
+    },
+    {
+      "title": "My Journey Through 15 Countries as a Remote Developer",
+      "slug": "journey-15-countries-remote-developer",
+      "description": "Lessons learned from working remotely while traveling",
+      "excerpt": "Lessons learned from working remotely while traveling across Europe and Asia. Tips on productivity, connectivity, and work-life balance.",
+      "tags": ["Travel", "Remote Work"],
+      "content": "Two years ago I packed a backpack and a laptop and set off to work remotely from 15 different countries. Here's what I learned about productivity, connectivity, and finding balance on the road.\n\n## The Setup\n\nI traveled with a 14\" MacBook Pro, noise-canceling headphones, and a portable WiFi hotspot. That's it. Minimalism was key.\n\n## Connectivity Challenges\n\nNot all coworking spaces are created equal. In Lisbon, the WiFi was flawless. In rural Thailand, I relied on a local SIM card's 4G tethering. Always have a backup plan.\n\n## Time Zone Management\n\nThe biggest challenge wasn't internet — it was time zones. I settled on a rule: overlap at least 4 hours with my team's core hours, and communicate asynchronously for everything else.\n\n## Favorite Spots\n\nLisbon, Chiang Mai, and Tokyo were my top three cities for remote work. Each offered excellent infrastructure, affordable living, and inspiring communities.",
       "category": {
         "id": 5
       },
       "author": {
         "id": 1
       },
-      "description": "Follow the story of Aaron Swartz, the boy who could change the world",
       "cover": null,
       "blocks": [
         {
           "__component": "shared.rich-text",
-          "body": "## Probant \n\nse Lorem markdownum negat. Argo *saxa* videnda cornuaque hunc qui tanta spes teneas! Obliquis est dicenti est salutat ille tamen iuvenum nostrae dolore. - Colores nocituraque comitata eripiunt - Addit quodcunque solum cui et dextram illis - Nulli meus nec extemplo ille ferebat pressit Se blandita fulvae vox gravem Pittheus cesserunt sanguine herbis tu comitum tenuit. Sui in ruunt; Doridaque maculosae fuissem! Et loqui. \n\n## Abit sua\n\nse Lorem markdownum negat. Argo *saxa* videnda cornuaque hunc qui tanta spes teneas! Obliquis est dicenti est salutat ille tamen iuvenum nostrae dolore. - Colores nocituraque comitata eripiunt - Addit quodcunque solum cui et dextram illis - Nulli meus nec extemplo ille ferebat pressit Se blandita fulvae vox gravem Pittheus cesserunt sanguine herbis tu comitum tenuit. Sui in ruunt; Doridaque maculosae fuissem! Et loqui. "
-        },
-        {
-          "__component": "shared.quote",
-          "title": "Thelonius Monk",
-          "body": "You've got to dig it to dig it, you dig?"
-        },
-        {
-          "__component": "shared.media",
-          "file": "coffee-art.jpg"
-        },
-        {
-          "__component": "shared.rich-text",
-          "body": "## Spatiantia astra \n\nFoeda, medio silva *errandum*: onus formam munere. Mutata bibulis est auxiliare arces etiamnunc verbis virgineo Priamidas illa Thescelus, nam fit locis lucis auras. Exitus hospes gratulor ut pondere [speslimite](http://www.curas.io/figuram); quid habent, Avernales faciente de. Pervenit Ino sonabile supplex cognoscenti vires, Bacchumque errat miserarum venandi dignabere dedisti. Discrimina iuncosaque virgaque tot sine superest [fissus](http://quos.org/sitet.aspx). Non color esset potest non sumit, sed vix arserat. Nisi immo silva tantum pectusque quos pennis quisquam artus!"
-        },
-        {
-          "__component": "shared.slider",
-          "files": ["coffee-art.jpg", "coffee-beans.jpg"]
+          "body": "## The Setup\n\nI traveled with a 14\" MacBook Pro, noise-canceling headphones, and a portable WiFi hotspot. That's it. Minimalism was key.\n\n## Connectivity Challenges\n\nNot all coworking spaces are created equal. In Lisbon, the WiFi was flawless. In rural Thailand, I relied on a local SIM card's 4G tethering. Always have a backup plan.\n\n## Time Zone Management\n\nThe biggest challenge wasn't internet — it was time zones. I settled on a rule: overlap at least 4 hours with my team's core hours, and communicate asynchronously for everything else."
         }
       ]
     },
     {
-      "title": "This shrimp is awesome",
-      "slug": "this-shrimp-is-awesome",
-      "category": {
-        "id": 4
-      },
-      "author": {
-        "id": 1
-      },
-      "description": "Mantis shrimps, or stomatopods, are marine crustaceans of the order Stomatopoda.",
-      "cover": null,
-      "blocks": [
-        {
-          "__component": "shared.rich-text",
-          "body": "## Probant \n\nse Lorem markdownum negat. Argo *saxa* videnda cornuaque hunc qui tanta spes teneas! Obliquis est dicenti est salutat ille tamen iuvenum nostrae dolore. - Colores nocituraque comitata eripiunt - Addit quodcunque solum cui et dextram illis - Nulli meus nec extemplo ille ferebat pressit Se blandita fulvae vox gravem Pittheus cesserunt sanguine herbis tu comitum tenuit. Sui in ruunt; Doridaque maculosae fuissem! Et loqui. \n\n## Abit sua\n\nse Lorem markdownum negat. Argo *saxa* videnda cornuaque hunc qui tanta spes teneas! Obliquis est dicenti est salutat ille tamen iuvenum nostrae dolore. - Colores nocituraque comitata eripiunt - Addit quodcunque solum cui et dextram illis - Nulli meus nec extemplo ille ferebat pressit Se blandita fulvae vox gravem Pittheus cesserunt sanguine herbis tu comitum tenuit. Sui in ruunt; Doridaque maculosae fuissem! Et loqui. "
-        },
-        {
-          "__component": "shared.quote",
-          "title": "Thelonius Monk",
-          "body": "You've got to dig it to dig it, you dig?"
-        },
-        {
-          "__component": "shared.media",
-          "file": "coffee-art.jpg"
-        },
-        {
-          "__component": "shared.rich-text",
-          "body": "## Spatiantia astra \n\nFoeda, medio silva *errandum*: onus formam munere. Mutata bibulis est auxiliare arces etiamnunc verbis virgineo Priamidas illa Thescelus, nam fit locis lucis auras. Exitus hospes gratulor ut pondere [speslimite](http://www.curas.io/figuram); quid habent, Avernales faciente de. Pervenit Ino sonabile supplex cognoscenti vires, Bacchumque errat miserarum venandi dignabere dedisti. Discrimina iuncosaque virgaque tot sine superest [fissus](http://quos.org/sitet.aspx). Non color esset potest non sumit, sed vix arserat. Nisi immo silva tantum pectusque quos pennis quisquam artus!"
-        },
-        {
-          "__component": "shared.slider",
-          "files": ["coffee-art.jpg", "coffee-beans.jpg"]
-        }
-      ]
-    },
-    {
-      "title": "A bug is becoming a meme on the internet",
-      "slug": "a-bug-is-becoming-a-meme-on-the-internet",
+      "title": "Docker Compose for Local Development: A Complete Guide",
+      "slug": "docker-compose-local-development-guide",
+      "description": "Set up reproducible development environments with Docker",
+      "excerpt": "Set up reproducible development environments with Docker Compose including databases, caching layers, and monitoring tools.",
+      "tags": ["Docker", "DevOps"],
+      "content": "Docker Compose transforms local development by making environments reproducible and disposable. No more \"works on my machine\" — here's how to set it up properly.\n\n## The Base Setup\n\nA good compose file starts with your application service, a database, and a volume for data persistence. We use PostgreSQL with a named volume so data survives container restarts.\n\n## Adding Redis for Caching\n\nRedis is invaluable for caching, session storage, and queues. Adding it to your compose stack is a single service definition.\n\n## Health Checks\n\nDon't start your app before the database is ready. Docker Compose health checks with depends_on conditions solve the startup ordering problem.\n\n## Development vs Production\n\nUse compose profiles or multiple compose files to separate development tools (hot reload, debug ports) from production configuration.",
       "category": {
         "id": 2
       },
       "author": {
         "id": 2
       },
-      "description": "How a bug on MySQL is becoming a meme on the internet",
       "cover": null,
       "blocks": [
         {
           "__component": "shared.rich-text",
-          "body": "## Probant \n\nse Lorem markdownum negat. Argo *saxa* videnda cornuaque hunc qui tanta spes teneas! Obliquis est dicenti est salutat ille tamen iuvenum nostrae dolore. - Colores nocituraque comitata eripiunt - Addit quodcunque solum cui et dextram illis - Nulli meus nec extemplo ille ferebat pressit Se blandita fulvae vox gravem Pittheus cesserunt sanguine herbis tu comitum tenuit. Sui in ruunt; Doridaque maculosae fuissem! Et loqui. \n\n## Abit sua\n\nse Lorem markdownum negat. Argo *saxa* videnda cornuaque hunc qui tanta spes teneas! Obliquis est dicenti est salutat ille tamen iuvenum nostrae dolore. - Colores nocituraque comitata eripiunt - Addit quodcunque solum cui et dextram illis - Nulli meus nec extemplo ille ferebat pressit Se blandita fulvae vox gravem Pittheus cesserunt sanguine herbis tu comitum tenuit. Sui in ruunt; Doridaque maculosae fuissem! Et loqui. "
-        },
-        {
-          "__component": "shared.quote",
-          "title": "Thelonius Monk",
-          "body": "You've got to dig it to dig it, you dig?"
-        },
-        {
-          "__component": "shared.media",
-          "file": "coffee-art.jpg"
-        },
-        {
-          "__component": "shared.rich-text",
-          "body": "## Spatiantia astra \n\nFoeda, medio silva *errandum*: onus formam munere. Mutata bibulis est auxiliare arces etiamnunc verbis virgineo Priamidas illa Thescelus, nam fit locis lucis auras. Exitus hospes gratulor ut pondere [speslimite](http://www.curas.io/figuram); quid habent, Avernales faciente de. Pervenit Ino sonabile supplex cognoscenti vires, Bacchumque errat miserarum venandi dignabere dedisti. Discrimina iuncosaque virgaque tot sine superest [fissus](http://quos.org/sitet.aspx). Non color esset potest non sumit, sed vix arserat. Nisi immo silva tantum pectusque quos pennis quisquam artus!"
-        },
-        {
-          "__component": "shared.slider",
-          "files": ["coffee-art.jpg", "coffee-beans.jpg"]
+          "body": "## The Base Setup\n\nA good compose file starts with your application service, a database, and a volume for data persistence. We use PostgreSQL with a named volume so data survives container restarts.\n\n## Adding Redis for Caching\n\nRedis is invaluable for caching, session storage, and queues. Adding it to your compose stack is a single service definition.\n\n## Health Checks\n\nDon't start your app before the database is ready. Docker Compose health checks with depends_on conditions solve the startup ordering problem."
         }
       ]
     },
     {
-      "title": "Beautiful picture",
-      "slug": "beautiful-picture",
+      "title": "Understanding WebSockets: Real-time Apps from Scratch",
+      "slug": "understanding-websockets-realtime-apps",
+      "description": "Building real-time collaboration with WebSockets",
+      "excerpt": "Building a real-time collaboration feature using WebSockets with proper reconnection logic and state synchronization.",
+      "tags": ["WebSockets", "Real-time"],
+      "content": "WebSockets enable true bidirectional communication between client and server. Let's build a real-time collaboration feature from scratch with proper error handling.\n\n## WebSocket vs SSE vs Polling\n\nBefore reaching for WebSockets, consider your use case. Server-Sent Events are simpler for one-way data streams. Long polling works for low-frequency updates. WebSockets shine for bidirectional, high-frequency communication.\n\n## Connection Management\n\nThe connection lifecycle — open, message, error, close — requires careful handling. Implement exponential backoff reconnection to gracefully handle network interruptions.\n\n## State Synchronization\n\nThe hardest part of real-time apps is keeping state consistent. We implement a version vector approach where each client tracks the last known state version and reconciles on reconnection.\n\n## Scaling with Redis Pub/Sub\n\nA single WebSocket server won't scale. Redis Pub/Sub lets you broadcast messages across multiple server instances, keeping all connected clients in sync.",
       "category": {
-        "id": 4
+        "id": 2
       },
       "author": {
         "id": 2
       },
-      "description": "Description of a beautiful picture",
       "cover": null,
       "blocks": [
         {
           "__component": "shared.rich-text",
-          "body": "## Probant \n\nse Lorem markdownum negat. Argo *saxa* videnda cornuaque hunc qui tanta spes teneas! Obliquis est dicenti est salutat ille tamen iuvenum nostrae dolore. - Colores nocituraque comitata eripiunt - Addit quodcunque solum cui et dextram illis - Nulli meus nec extemplo ille ferebat pressit Se blandita fulvae vox gravem Pittheus cesserunt sanguine herbis tu comitum tenuit. Sui in ruunt; Doridaque maculosae fuissem! Et loqui. \n\n## Abit sua\n\nse Lorem markdownum negat. Argo *saxa* videnda cornuaque hunc qui tanta spes teneas! Obliquis est dicenti est salutat ille tamen iuvenum nostrae dolore. - Colores nocituraque comitata eripiunt - Addit quodcunque solum cui et dextram illis - Nulli meus nec extemplo ille ferebat pressit Se blandita fulvae vox gravem Pittheus cesserunt sanguine herbis tu comitum tenuit. Sui in ruunt; Doridaque maculosae fuissem! Et loqui. "
-        },
-        {
-          "__component": "shared.quote",
-          "title": "Thelonius Monk",
-          "body": "You've got to dig it to dig it, you dig?"
-        },
-        {
-          "__component": "shared.media",
-          "file": "coffee-art.jpg"
-        },
-        {
-          "__component": "shared.rich-text",
-          "body": "## Spatiantia astra \n\nFoeda, medio silva *errandum*: onus formam munere. Mutata bibulis est auxiliare arces etiamnunc verbis virgineo Priamidas illa Thescelus, nam fit locis lucis auras. Exitus hospes gratulor ut pondere [speslimite](http://www.curas.io/figuram); quid habent, Avernales faciente de. Pervenit Ino sonabile supplex cognoscenti vires, Bacchumque errat miserarum venandi dignabere dedisti. Discrimina iuncosaque virgaque tot sine superest [fissus](http://quos.org/sitet.aspx). Non color esset potest non sumit, sed vix arserat. Nisi immo silva tantum pectusque quos pennis quisquam artus!"
-        },
-        {
-          "__component": "shared.slider",
-          "files": ["coffee-art.jpg", "coffee-beans.jpg"]
-        }
-      ]
-    },
-    {
-      "title": "What's inside a Black Hole",
-      "slug": "what-s-inside-a-black-hole",
-      "category": {
-        "id": 1
-      },
-      "author": {
-        "id": 2
-      },
-      "description": "Maybe the answer is in this article, or not...",
-      "cover": null,
-      "blocks": [
-        {
-          "__component": "shared.rich-text",
-          "body": "## Probant \n\nse Lorem markdownum negat. Argo *saxa* videnda cornuaque hunc qui tanta spes teneas! Obliquis est dicenti est salutat ille tamen iuvenum nostrae dolore. - Colores nocituraque comitata eripiunt - Addit quodcunque solum cui et dextram illis - Nulli meus nec extemplo ille ferebat pressit Se blandita fulvae vox gravem Pittheus cesserunt sanguine herbis tu comitum tenuit. Sui in ruunt; Doridaque maculosae fuissem! Et loqui. \n\n## Abit sua\n\nse Lorem markdownum negat. Argo *saxa* videnda cornuaque hunc qui tanta spes teneas! Obliquis est dicenti est salutat ille tamen iuvenum nostrae dolore. - Colores nocituraque comitata eripiunt - Addit quodcunque solum cui et dextram illis - Nulli meus nec extemplo ille ferebat pressit Se blandita fulvae vox gravem Pittheus cesserunt sanguine herbis tu comitum tenuit. Sui in ruunt; Doridaque maculosae fuissem! Et loqui. "
-        },
-        {
-          "__component": "shared.quote",
-          "title": "Thelonius Monk",
-          "body": "You've got to dig it to dig it, you dig?"
-        },
-        {
-          "__component": "shared.media",
-          "file": "coffee-art.jpg"
-        },
-        {
-          "__component": "shared.rich-text",
-          "body": "## Spatiantia astra \n\nFoeda, medio silva *errandum*: onus formam munere. Mutata bibulis est auxiliare arces etiamnunc verbis virgineo Priamidas illa Thescelus, nam fit locis lucis auras. Exitus hospes gratulor ut pondere [speslimite](http://www.curas.io/figuram); quid habent, Avernales faciente de. Pervenit Ino sonabile supplex cognoscenti vires, Bacchumque errat miserarum venandi dignabere dedisti. Discrimina iuncosaque virgaque tot sine superest [fissus](http://quos.org/sitet.aspx). Non color esset potest non sumit, sed vix arserat. Nisi immo silva tantum pectusque quos pennis quisquam artus!"
-        },
-        {
-          "__component": "shared.slider",
-          "files": ["coffee-art.jpg", "coffee-beans.jpg"]
+          "body": "## WebSocket vs SSE vs Polling\n\nBefore reaching for WebSockets, consider your use case. Server-Sent Events are simpler for one-way data streams. Long polling works for low-frequency updates. WebSockets shine for bidirectional, high-frequency communication.\n\n## Connection Management\n\nThe connection lifecycle — open, message, error, close — requires careful handling. Implement exponential backoff reconnection to gracefully handle network interruptions.\n\n## State Synchronization\n\nThe hardest part of real-time apps is keeping state consistent. We implement a version vector approach where each client tracks the last known state version and reconciles on reconnection."
         }
       ]
     }

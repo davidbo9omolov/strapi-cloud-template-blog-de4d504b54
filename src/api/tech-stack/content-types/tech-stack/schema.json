@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tech_stacks",
+  "info": {
+    "singularName": "tech-stack",
+    "pluralName": "tech-stacks",
+    "displayName": "Tech Stack",
+    "description": "Technologies and skills"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Languages",
+        "Frontend",
+        "Backend",
+        "Database",
+        "DevOps",
+        "Mobile",
+        "Testing",
+        "Tools",
+        "Cloud",
+        "Other"
+      ],
+      "required": true
+    },
+    "level": {
+      "type": "integer",
+      "required": true,
+      "min": 1,
+      "max": 5,
+      "default": 3
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

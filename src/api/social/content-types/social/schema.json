@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "socials",
+  "info": {
+    "singularName": "social",
+    "pluralName": "socials",
+    "displayName": "Social",
+    "description": "Social media links"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "handle": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "github",
+        "linkedin",
+        "telegram",
+        "discord",
+        "twitter",
+        "instagram",
+        "facebook",
+        "youtube",
+        "twitch",
+        "reddit",
+        "stackoverflow",
+        "medium",
+        "devto",
+        "dribbble",
+        "behance",
+        "figma",
+        "codepen",
+        "gitlab",
+        "bitbucket",
+        "npm",
+        "whatsapp",
+        "slack",
+        "skype",
+        "mail",
+        "website",
+        "rss"
+      ],
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}
