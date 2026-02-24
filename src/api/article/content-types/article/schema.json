@@ -15,13 +15,6 @@
     "title": {
       "type": "string"
     },
-    "description": {
-      "type": "text",
-      "maxLength": 80
-    },
-    "excerpt": {
-      "type": "text"
-    },
     "slug": {
       "type": "uid",
       "targetField": "title"
@@ -40,21 +33,6 @@
     },
     "content": {
       "type": "richtext"
-    },
-    "tags": {
-      "type": "json"
-    },
-    "author": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::author.author",
-      "inversedBy": "articles"
-    },
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "articles"
     },
     "blocks": {
       "type": "dynamiczone",

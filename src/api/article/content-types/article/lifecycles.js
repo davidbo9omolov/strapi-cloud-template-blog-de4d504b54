@@ -34,7 +34,6 @@ module.exports = {
   beforeUpdate(event) {
     const { data } = event.params;
 
-    // Recalculate readTime when content changes
     if (data.content !== undefined) {
       data.readTime = calculateReadTime(data.content);
     }
