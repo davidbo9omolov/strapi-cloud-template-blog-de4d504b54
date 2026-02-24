@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "devto_settings",
+  "info": {
+    "singularName": "devto-setting",
+    "pluralName": "devto-settings",
+    "displayName": "DevTo Settings",
+    "description": "Configure Dev.to article sync"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "syncEnabled": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

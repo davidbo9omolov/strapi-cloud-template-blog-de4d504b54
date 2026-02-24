@@ -558,6 +558,35 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDevtoSettingDevtoSetting extends Struct.SingleTypeSchema {
+  collectionName: 'devto_settings';
+  info: {
+    description: 'Configure Dev.to article sync';
+    displayName: 'DevTo Settings';
+    pluralName: 'devto-settings';
+    singularName: 'devto-setting';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::devto-setting.devto-setting'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    syncEnabled: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -1223,6 +1252,7 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::devto-setting.devto-setting': ApiDevtoSettingDevtoSetting;
       'api::global.global': ApiGlobalGlobal;
       'api::social.social': ApiSocialSocial;
       'api::tech-stack.tech-stack': ApiTechStackTechStack;

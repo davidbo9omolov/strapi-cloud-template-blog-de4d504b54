@@ -18,19 +18,131 @@ function getConfig() {
   return { accessToken, personUrn, blogBaseUrl };
 }
 
-function stripMarkdown(text) {
+// Unicode bold mapping for A-Z, a-z, 0-9
+const BOLD_MAP = {};
+'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.split('').forEach((ch, i) => {
+  const bold = '𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵';
+  BOLD_MAP[ch] = [...bold][i];
+});
+
+function toBold(str) {
+  return [...str].map((ch) => BOLD_MAP[ch] || ch).join('');
+}
+
+// Unicode italic mapping for A-Z, a-z
+const ITALIC_MAP = {};
+'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('').forEach((ch, i) => {
+  const italic = '𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘑𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻';
+  ITALIC_MAP[ch] = [...italic][i];
+});
+
+function toItalic(str) {
+  return [...str].map((ch) => ITALIC_MAP[ch] || ch).join('');
+}
+
+// Unicode monospace mapping for A-Z, a-z, 0-9
+const MONO_MAP = {};
+'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'.split('').forEach((ch, i) => {
+  const mono = '𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚟𝚠𝚡𝚢𝚣𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿';
+  MONO_MAP[ch] = [...mono][i];
+});
+
+function toMono(str) {
+  return [...str].map((ch) => MONO_MAP[ch] || ch).join('');
+}
+
+function convertTable(tableBlock) {
+  const rows = tableBlock.trim().split('\n').filter((r) => !/^\s*\|[-:\s|]+\|\s*$/.test(r));
+  if (rows.length === 0) return '';
+
+  const parseRow = (row) => row.split('|').map((c) => c.trim()).filter(Boolean);
+  const header = parseRow(rows[0]);
+  const dataRows = rows.slice(1).map(parseRow);
+
+  const lines = [];
+  if (header.length > 0) {
+    lines.push(toBold(header.join('  |  ')));
+  }
+  for (const row of dataRows) {
+    lines.push(row.join('  |  '));
+  }
+  return lines.join('\n');
+}
+
+function markdownToLinkedIn(text) {
   if (!text) return '';
-  return text
-    .replace(/!\[.*?\]\(.*?\)/g, '')
-    .replace(/\[([^\]]+)\]\(.*?\)/g, '$1')
-    .replace(/#{1,6}\s+/g, '')
-    .replace(/[*_]{1,3}([^*_]+)[*_]{1,3}/g, '$1')
-    .replace(/```[\s\S]*?```/g, '')
-    .replace(/`([^`]+)`/g, '$1')
-    .replace(/>\s+/g, '')
-    .replace(/[-*+]\s+/g, '- ')
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
+
+  let result = text;
+
+  // Remove images
+  result = result.replace(/!\[.*?\]\(.*?\)/g, '');
+
+  // Convert links: [text](url) → text (url)
+  result = result.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1 ($2)');
+
+  // Convert tables before other processing
+  result = result.replace(/((?:\|[^\n]+\|\n)+)/g, (match) => convertTable(match));
+
+  // Convert code blocks to monospace unicode
+  result = result.replace(/```(?:\w*)\n([\s\S]*?)```/g, (_, code) => {
+    const lines = code.trimEnd().split('\n');
+    return '\n' + lines.map((line) => '    ' + toMono(line)).join('\n') + '\n';
+  });
+
+  // Convert inline code to monospace
+  result = result.replace(/`([^`]+)`/g, (_, code) => toMono(code));
+
+  // Convert headers to bold
+  result = result.replace(/^#{1,6}\s+(.+)$/gm, (_, heading) => '\n' + toBold(heading));
+
+  // Convert bold+italic (***text*** or ___text___)
+  result = result.replace(/\*{3}([^*]+)\*{3}/g, (_, t) => toBold(toItalic(t)));
+  result = result.replace(/_{3}([^_]+)_{3}/g, (_, t) => toBold(toItalic(t)));
+
+  // Convert bold (**text** or __text__)
+  result = result.replace(/\*{2}([^*]+)\*{2}/g, (_, t) => toBold(t));
+  result = result.replace(/_{2}([^_]+)_{2}/g, (_, t) => toBold(t));
+
+  // Convert italic (*text* or _text_)
+  result = result.replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, (_, t) => toItalic(t));
+  result = result.replace(/(?<!_)_([^_]+)_(?!_)/g, (_, t) => toItalic(t));
+
+  // Convert blockquotes
+  result = result.replace(/^>\s+(.+)$/gm, '┃ $1');
+
+  // Convert horizontal rules to line separator
+  result = result.replace(/^-{3,}$/gm, '━━━━━━━━━━━━━━━━━━━━');
+
+  // Bullet lists — keep as-is with proper dash
+  result = result.replace(/^[-*+]\s+/gm, '• ');
+
+  // Numbered lists — keep as-is
+  result = result.replace(/^(\d+)\.\s+/gm, '$1. ');
+
+  // Clean up excessive blank lines
+  result = result.replace(/\n{3,}/g, '\n\n');
+
+  return result.trim();
+}
+
+const LINKEDIN_MAX_LENGTH = 3000;
+const SITE_URL = 'https://www.davidbogomolov.com';
+
+function buildReadMore(slug, blogBaseUrl) {
+  const articleUrl = slug && blogBaseUrl
+    ? `${blogBaseUrl.replace(/\/$/, '')}/blog/${slug}`
+    : SITE_URL;
+  return `\n\n━━━━━━━━━━━━━━━━━━━━\n📖 Read the full article: ${articleUrl}`;
+}
+
+function truncateToLimit(text, maxLen, readMore) {
+  if (text.length <= maxLen) return text;
+
+  const cutoff = maxLen - readMore.length;
+  // Cut at the last paragraph break before the limit
+  const lastBreak = text.lastIndexOf('\n\n', cutoff);
+  const truncated = lastBreak > cutoff * 0.5 ? text.substring(0, lastBreak) : text.substring(0, cutoff);
+  return truncated + readMore;
 }
 
 function buildHeaders(accessToken, extraHeaders = {}) {
@@ -112,10 +224,12 @@ async function createPost({ title, content, slug, imageUrl }) {
 
   const { accessToken, personUrn, blogBaseUrl } = config;
 
-  const plainContent = stripMarkdown(content);
-  const commentary = plainContent
-    ? `${title}\n\n${plainContent}`
-    : title;
+  const formattedContent = markdownToLinkedIn(content);
+  const fullCommentary = formattedContent
+    ? `${toBold(title)}\n\n${formattedContent}`
+    : toBold(title);
+  const readMore = buildReadMore(slug, blogBaseUrl);
+  const commentary = truncateToLimit(fullCommentary, LINKEDIN_MAX_LENGTH, readMore);
 
   strapi.log.info(`[LinkedIn] Commentary length: ${commentary.length}`);
   strapi.log.info(`[LinkedIn] Commentary first 500 chars: ${JSON.stringify(commentary.substring(0, 500))}`);
